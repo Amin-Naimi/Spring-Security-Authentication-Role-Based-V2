@@ -28,10 +28,9 @@ public class Users {
     @Column(name="user_Last_Name")
     private String userLastName;
 
-    @Column(length = 100)
     private String password;
 
-   @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+   @ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinTable(name = "USERS_ROLES",
             joinColumns = @JoinColumn(name = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
