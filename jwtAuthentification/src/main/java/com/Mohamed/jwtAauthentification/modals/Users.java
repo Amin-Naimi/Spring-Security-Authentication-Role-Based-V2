@@ -30,8 +30,10 @@ public class Users {
 
     private String password;
 
+    //@ManyToMany(cascade = CascadeType.DETACH,fetch = FetchType.EAGER)
     //@ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
-    @ManyToMany(cascade = CascadeType.DETACH,fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+
     @JoinTable(name = "USERS_ROLES",
             joinColumns = @JoinColumn(name = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))

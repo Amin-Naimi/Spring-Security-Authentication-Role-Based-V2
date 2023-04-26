@@ -3,10 +3,7 @@ package com.Mohamed.jwtAauthentification.controlleurs;
 import com.Mohamed.jwtAauthentification.modals.Users;
 import com.Mohamed.jwtAauthentification.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 
@@ -22,8 +19,18 @@ public class UserController {
         return userService.createNewUser(users);
     }
 
-    @PostConstruct
+    /*@PostConstruct
     public void initRoleAndUser() {
         userService.initRoleAndUser();
+    }*/
+
+    @GetMapping("/admin")
+    public String forAdmin(){
+        return "Welcome Mr admin";
+    }
+
+    @GetMapping("/normal")
+    public String forUSer(){
+        return "Welcome Mr user";
     }
 }

@@ -5,6 +5,7 @@ import com.Mohamed.jwtAauthentification.modals.Users;
 import com.Mohamed.jwtAauthentification.repositorys.RolesRepository;
 import com.Mohamed.jwtAauthentification.repositorys.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -16,12 +17,15 @@ public class UserService {
     private UserRepository userRepository;
     @Autowired
     private RolesRepository rolesRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public Users createNewUser(Users users){
+        users.setPassword(passwordEncoder.encode(users.getPassword()));
         return userRepository.save(users);
     }
 
-    public void initRoleAndUser() {
+   /* public void initRoleAndUser() {
 
         Roles adminRole = new Roles();
         adminRole.setRoleName("Admin");
@@ -34,10 +38,10 @@ public class UserService {
         rolesRepository.save(userRole);
 
         Users adminUser = new Users();
-        adminUser.setUsername("admin123");
-        adminUser.setPassword("admin@pass");
-        adminUser.setUserFirstName("admin");
-        adminUser.setUserLastName("admin");
+        adminUser.setUsername("Goku78");
+        adminUser.setPassword(passwordEncoder.encode("admin@SS"));
+        adminUser.setUserFirstName("Kakaroto");
+        adminUser.setUserLastName("Songoku");
         Set<Roles> adminRoles = new HashSet<>();
 
         adminRoles.add(adminRole);
@@ -45,14 +49,14 @@ public class UserService {
         userRepository.save(adminUser);
 
         Users user = new Users();
-        user.setUsername("raj123");
-        user.setPassword("raj@123");
-        user.setUserFirstName("raj");
-        user.setUserLastName("sharma");
+        user.setUsername("MohamdNaimi");
+        user.setPassword(passwordEncoder.encode("NAio7825"));
+        user.setUserFirstName("Amin");
+        user.setUserLastName("Naimi");
         Set<Roles> userRoles = new HashSet<>();
         userRoles.add(userRole);
         user.setRoleSet(userRoles);
         userRepository.save(user);
-    }
+    }*/
 
 }
