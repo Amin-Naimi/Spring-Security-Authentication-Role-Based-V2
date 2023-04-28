@@ -27,15 +27,15 @@ public class UserController {
         userService.initRoleAndUser();
     }*/
 
-    @PreAuthorize("hasRole('EDITOR')")
+    @PreAuthorize("hasRole('Administrateur')")
     @GetMapping("/admin")
     public String forAdmin(){
-        return "Welcome Mr admin";
+        return "Welcome Mr Administrateur";
     }
 
     @PreAuthorize("hasRole('User')")
     @GetMapping("/normal")
     public ResponseEntity<String> forUSer(){
-        return new ResponseEntity<>("Welcome Mr user", HttpStatus.OK);
+        return new ResponseEntity<>("user spring boot work i love you you are greate ", HttpStatus.OK);
     }
 }

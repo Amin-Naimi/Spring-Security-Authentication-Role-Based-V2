@@ -20,6 +20,12 @@ export class UserService {
     return this.http.post(`${this.APP_URL}/login`, LoginData, { headers: this.requestHeader })
   }
 
+  public forUser(){
+    return this.http.get(`${this.APP_URL}/user/normal`, {
+      responseType: 'text',
+    });
+  }
+
   public roleVerification(roles: any): boolean {
     let isValid: boolean = false;
     const userRoles: any = this.auth.getRoles();
